@@ -165,6 +165,14 @@ int main()
                     cin >> nitC;
                     cout << "Ingrese el genero (M: Mujer, H: Hombre): ";
                     cin >> generoC;
+                    if (generoC == "M") {
+                        generoC = "1";
+                    }
+                    else {
+                        if (generoC == "H") {
+                            generoC = "0";
+                        }
+                    }
                     cout << "Ingrese el telefono: ";
                     cin >> telefono;
                     cout << "Ingrese el correo: ";
@@ -1219,3 +1227,106 @@ int main()
 
 
 }
+
+/*
+class Opciones {
+        private: //atributos
+        int op;
+        string puestos, direccion, proveedor;
+            int telefono = 0;
+
+        public: //metodos
+            void actualizar();
+            void correr();
+            Opciones() {
+            };
+            Opciones(string dir, string prov, int tel, string n) {
+                puestos = n;
+                proveedor = prov;
+                direccion = dir;
+                telefono = tel;
+            }
+
+            void crear() {
+                int q_estado;
+                conectar cn = conectar();
+                cn.abrir_conexion();
+                if (cn.getConectar()) {
+                    string t = to_string(telefono);
+                    string nit, dir, proveedor;
+                    cin.ignore();
+                    cout << "Ingrese NIT: " << endl;
+                    getline(cin, nit);
+                    cout << "Ingrese Direccion: " << endl;
+                    getline(cin, dir);
+                    cout << "Ingrese Proveedor: " << endl;
+                    getline(cin, proveedor);
+                    cout << "Ingrese Telefono: " << endl;
+                    cin >> t;
+                    cin.ignore();
+
+                    void leer() {
+                        int q_estado;
+                        conexion cn = conexion();
+                        MYSQL_ROW fila;
+                        MYSQL_RES* resultado;
+                        cn.abrir_conexion();
+                        if (cn.getConectar()) {
+                            string consulta = "select * from proveedores";
+                            const char* c = consulta.c_str();
+                            q_estado = mysql_query(cn.getConectar(), c);
+                            if (!q_estado) {
+                                resultado = mysql_store_result(cn.getConectar());
+                            };
+                        };
+                    };
+                };
+                void actualizar(); {
+                    conexion cn = conexion();
+                    cn.abrir_conexion();
+                    if (cn.getConectar()) {
+                        int q_estado;
+                        string id, dir, prove, nit;
+                        string tel = to_string(telefono);
+                        cout << "Ingrese el Id del Proveedor que desea Actualizar: " << endl;
+                        cin >> id;
+                        cin.ignore();
+
+                        cout << "Ingrese Proveedor: " << endl;
+                        getline(cin, prove);
+
+                        cout << "Ingrese Nit: " << endl;
+                        getline(cin, nit);
+
+                        cout << "Ingrese Direccion: " << endl;
+                        getline(cin, dir);
+
+                        cout << "Ingrese Telefono: " << endl;
+                        cin >> tel;
+                        cin.ignore();
+                    }
+
+                    void eliminar() {
+                        conexion cn = conexion();
+                        cn.abrir_conexion();
+                        if (cn.getConectar()) {
+                            int q_estado;
+                            string prov;
+                            cout << "Ingrese el id del Proveedor que desea eliminar" << endl;
+                            cin >> prov;
+                            string eliminar = "Delete from proveedores where proveedor = '" + prov + "' ";
+                            const char* i = eliminar.c_str();
+                            q_estado = mysql_query(cn.getConectar(), i);
+                            if (!q_estado) {
+                                cout << " Registro Eliminado Exitosamente... " << endl;
+                            }
+                            else {
+                                cout << "xxx Error al eliminar el Registro xxx " << endl;
+                            }
+
+                        }
+                        else {
+                            cout << "Error en la conexion... " << endl;
+                        }
+                        cn.cerrar_conexion();
+                    }*/
